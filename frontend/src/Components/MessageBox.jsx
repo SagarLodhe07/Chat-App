@@ -16,9 +16,9 @@ const MessageBox = () => {
         <WelcomePage />
       ) : (
         <>
-          <div className="bg-slate-400 px-4 py-2 mb-2">
-            <span className="text-gray-600">To: </span>
-            <span className="text-gray-900 font-bold">
+          <div className="bg-slate-400 px-4 py-2 mb-2 overflow-hidden rounded-md">
+            <span className="text-white">To: </span>
+            <span className="text-white font-bold whitespace-nowrap overflow-hidden text-ellipsis">
               {selectedConverstion.fullname}
             </span>
           </div>

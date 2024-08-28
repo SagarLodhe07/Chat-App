@@ -13,6 +13,7 @@
     "@heroicons/react": "^2.1.5",
     "@material-tailwind/react": "^2.1.9",
     "axios": "^1.7.4",
+    "chat-app": "file:..",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.4.1",
