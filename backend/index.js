@@ -6,8 +6,8 @@ import { Connect_DB } from "./Configuration/dbConfig.js";
 import cookieParser from "cookie-parser";
 import messageRouter from "./Routes/messageRoute.js";
 import userRouter from "./Routes/userRoute.js"
+import { app, server } from "./Socket_IO/socket.js";
 
-const app = express();
 const PORT = Config_ENV.PORT || 3000;
 
 
@@ -19,7 +19,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/message", messageRouter);
 app.use("/api/user", userRouter );
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server Started at ${PORT}`);
   Connect_DB()
 });

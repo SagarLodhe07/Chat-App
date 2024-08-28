@@ -43,14 +43,23 @@ export const signup = async (req, res) => {
       profileImage: gender == "Male" ? malePic : girlPic,
     });
 
-    await newUser.save();
-    generateTokenSetCoookie(newUser._id, res);
-    return res.status(201).json({
-      success: true,
-      message: "Successfully created User",
-      data: newUser,
-      error: {},
-    });
+    if (newUser) {
+      generateTokenSetCoookie(newUser._id, res);
+      await newUser.save();
+      res.status(201).json({
+        // success: true,
+        // message: "Successfully created User",
+        // data: newUser,
+        // error: {},
+
+        _id: newUser._id,
+        fullname: newUser.fullname,
+        username: newUser.username,
+        profileImage: newUser.profileImage,
+      });
+    } else {
+      res.status(400).json({ error: "Invaild User Data." });
+    }
   } catch (error) {
     console.log("From Sign In Fucntion", error.message);
     res.status(500).json({ error: "Internal Server Error" });
@@ -60,6 +69,8 @@ export const login = async (req, res) => {
   try {
     const { mobileNumber, password } = req.body;
     const user = await User.findOne({ mobileNumber });
+    // console.log(user);
+    
     const isPasswordMatch = await bcrypt.compare(
       password,
       user?.password || ""
@@ -67,23 +78,25 @@ export const login = async (req, res) => {
 
     // User with given Mobilenumber
     if (!user) {
-      return res.status(404).json({ error: "User Not Found" });
+      return res.status(400).json({ error: "Invalid User" });
     }
     if (!isPasswordMatch) {
-      return res.status(400).json({ error: "Password don't match" });
+      return res.status(400).json({ error: "Password do not match" });
     }
 
     generateTokenSetCoookie(user._id, res);
 
-    return res.status(200).json({
-      message: "Login Successfully",
-      data: user,
-      error: {},
+    res.status(200).json({
+      _id: user._id,
+      fullname: user.fullname,
+      username: user.username,
+      profileImage: user.profileImage,
     });
   } catch (error) {
     console.log("Error in Login Controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
+
 };
 export const logout = (req, res) => {
   try {
