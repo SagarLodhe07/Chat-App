@@ -1,7 +1,7 @@
 import React from "react";
 import Chat from "./Chat";
-import useGetConversation from "../Hooks/useGetConversation";
-import { useListenMessage } from "../Hooks/useListenMessage";
+import useGetConversation from "../Hooks/useGetConversation.js";
+import { useListenMessage } from "../Hooks/useListenMessage.js";
 
 const Conversations = () => {
   const { loading, conversations } = useGetConversation();
