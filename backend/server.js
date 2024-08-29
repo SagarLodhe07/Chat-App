@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import authRouter from "./Routes/authRoute.js";
 import { Config_ENV } from "./Configuration/configFile.js";
@@ -8,7 +9,6 @@ import userRouter from "./Routes/userRoute.js";
 import { app, server } from "./Socket_IO/socket.js";
 const PORT = Config_ENV.PORT || 3000;
 
-import path from "path";
 
 app.use(cookieParser());
 app.use(express.json());
