@@ -6,8 +6,8 @@ import formatSendMessageTime from "../Utils/TimeFormater.js";
 const Message = ({ message }) => {
   const { selectedConverstion } = useConversation();
   const { authuser } = useAuthContext();
-  console.log("Message", message);
-  console.log("Auth", authuser);
+  // console.log("Message", message);
+  // console.log("Auth", authuser);
 
   const fromMe = message.senderId === authuser._id;
   const chatClassName = fromMe ? "chat-end" : "chat-start";

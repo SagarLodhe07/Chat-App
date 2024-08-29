@@ -5,10 +5,10 @@ import Search from "./Search";
 import { CiLogout } from "react-icons/ci";
 
 const Siderbar = () => {
-  const {loading,logout}=useLogout()
+  const {logout}=useLogout()
  const {authuser}= useAuthContext()
 
- console.log("Auth User",authuser);
+//  console.log("Auth User",authuser);
  
   return (
     <div className="flex flex-col h-full">

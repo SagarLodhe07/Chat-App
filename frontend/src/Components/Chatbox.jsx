@@ -4,7 +4,7 @@ import useGetMessage from "../Hooks/useGetMessage";
 
 const Chatbox = () => {
   const { messages, loading } = useGetMessage();
-  console.log("Messages", messages);
+  // console.log("Messages", messages);
 
   const lastMessageRef = useRef();
 
